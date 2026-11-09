@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đây thôn Vĩ Dạ - Hàn Mặc Tử</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0b1b33;
+    --card: #16305a;
+    --gold: #d4af37;
+    --gold-light: #f5dc8a;
+    --cream: #f4ecd8;
+    --brown: #3e2612;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--night);
+    color: var(--cream);
+    font-family: "Noto Sans", Arial, sans-serif;
+    overflow: hidden;
+  }
+  .deck { position: relative; width: 100vw; height: 100vh; }
+
+  .slide {
+    position: absolute; inset: 0;
+    padding: 6vh 8vw;
+    display: flex; flex-direction: column; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity .6s ease, visibility .6s;
+    background: radial-gradient(ellipse at 70% 20%, #1d3d6b 0%, var(--night) 65%);
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+
+  h1, h2 {
+    font-family: "Noto Serif", Georgia, serif;
+    color: var(--gold);
+    font-size: clamp(28px, 4.2vw, 46px);
+    margin-bottom: 3vh;
+    line-height: 1.25;
+  }
+  p, li { font-size: clamp(15px, 1.8vw, 20px); line-height: 1.65; }
+  ul { list-style: none; }
+  li { margin-bottom: 1.2vh; padding-left: 1.2em; position: relative; }
+  li::before { content: "•"; color: var(--gold); position: absolute; left: 0; }
+
+  .tag {
+    font-size: 13px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5vh;
+  }
+
+  /* Slide 1 */
+  .s1 { flex-direction: row; align-items: center; gap: 4vw; }
+  .s1 .text { flex: 1; }
+  .s1 .art {
+    flex: 1; height: 70vh; border-radius: 8px;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(245,220,138,.35) 0 12%, transparent 13%),
+      linear-gradient(180deg, #1d3d6b 0%, #0b1b33 60%, #16305a 100%);
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  }
+
+  /* Khối trích thơ */
+  .quote {
+    margin-top: 3vh;
+    padding: 2.2vh 2.5vw;
+    border-left: 3px solid var(--gold);
+    background: rgba(11,27,51,.6);
+    font-family: "Noto Serif", serif;
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: clamp(16px, 2vw, 22px);
+  }
+  .quote span { display: block; font-style: normal; font-size: 14px; color: var(--cream); opacity: .75; margin-top: 4px; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    padding: 4vh 3vw;
+    border-radius: 8px;
+  }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5vh 2.5vw; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; }
+  .col h3 {
+    font-family: "Noto Serif", serif;
+    color: var(--gold);
+    font-size: clamp(20px, 2.4vw, 28px);
+    margin-bottom: 2vh;
+  }
+
+  /* Slide 6 essay */
+  .slide.s6 {
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding-top: 8vh;
+    padding-bottom: 12vh;
+  }
+  .slide.s6 h2 { margin-bottom: 2.5vh; }
+  .slide.s6 p {
+    font-size: clamp(14px, 1.5vw, 17px);
+    line-height: 1.75;
+    margin-bottom: 1.6vh;
+    text-align: justify;
+  }
+
+  /* Điều khiển */
+  .controls {
+    position: fixed; bottom: 3vh; left: 50%;
+    transform: translateX(-50%);
+    display: flex; align-items: center; gap: 14px;
+    z-index: 10;
+  }
+  .controls button {
+    background: rgba(11,27,51,.85);
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+    padding: 8px 18px; border-radius: 4px;
+    cursor: pointer; font: inherit;
+  }
+  .controls button:hover { box-shadow: 0 0 14px rgba(212,175,55,.5); }
+  .counter { color: var(--cream); font-size: 14px; min-width: 50px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- Slide 1 -->
+  <section class="slide s1 active">
+    <div class="text">
+      <p class="tag">Đây thôn Vĩ Dạ</p>
+      <h1>Hàn Mặc Tử</h1>
+      <ul>
+        <li><b>Tác giả:</b> Hàn Mặc Tử.</li>
+        <li><b>Tác phẩm:</b> Đây thôn Vĩ Dạ.</li>
+        <li><b>Nội dung:</b> Bài thơ khắc họa vẻ đẹp thiên nhiên và con người xứ Huế, đồng thời thể hiện tâm trạng của nhà thơ.</li>
+      </ul>
+    </div>
+    <div class="art"></div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <h2>Thiên nhiên trong trẻo, con người duyên dáng</h2>
+    <ul>
+      <li>Hình ảnh nắng hàng cau gợi ánh sáng ban mai tươi đẹp.</li>
+      <li>Khu vườn xanh mướt, tràn đầy sức sống.</li>
+      <li>Hình ảnh con người thấp thoáng sau lá trúc.</li>
+      <li>Gợi vẻ đẹp nhẹ nhàng, kín đáo và phúc hậu của con người xứ Huế.</li>
+    </ul>
+    <div class="quote">“Vườn ai mướt quá xanh như ngọc”<span>Câu thơ nổi bật</span></div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <h2>Cảnh vật mang nỗi buồn, cô đơn</h2>
+    <ul>
+      <li>Gió và mây đi theo hai hướng khác nhau, gợi sự chia lìa.</li>
+      <li>Dòng nước buồn, chảy chậm và lặng lẽ.</li>
+      <li>Hình ảnh thuyền và trăng tạo nên khung cảnh thơ mộng, huyền ảo.</li>
+      <li>Thể hiện tâm trạng cô đơn, buồn bã của nhà thơ.</li>
+    </ul>
+    <div class="quote">“Gió theo lối gió, mây đường mây”<span>Câu thơ nổi bật</span></div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <h2>Thiên nhiên huyền ảo, con người xa cách</h2>
+    <ul>
+      <li>Cảnh vật chìm trong làn sương khói mờ ảo.</li>
+      <li>Hình ảnh con người trở nên xa xôi, khó nắm bắt.</li>
+      <li>Câu hỏi cuối bài thể hiện sự băn khoăn về tình cảm.</li>
+      <li>Cho thấy khát vọng được yêu thương và đồng cảm của nhà thơ.</li>
+    </ul>
+    <div class="quote">“Ai biết tình ai có đậm đà?”<span>Câu thơ nổi bật</span></div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="slide">
+    <h2>Giá trị nội dung và nghệ thuật</h2>
+    <div class="cols">
+      <div class="card col">
+        <h3>Về nội dung</h3>
+        <ul>
+          <li>Ca ngợi vẻ đẹp thiên nhiên và con người xứ Huế.</li>
+          <li>Thể hiện tâm hồn nhạy cảm, nỗi buồn và khát vọng tình yêu thương của tác giả.</li>
+        </ul>
+      </div>
+      <div class="card col">
+        <h3>Về nghệ thuật</h3>
+        <ul>
+          <li>Hình ảnh thơ giàu sức gợi.</li>
+          <li>Ngôn ngữ tinh tế, giàu cảm xúc.</li>
+          <li>Sử dụng câu hỏi tu từ và hình ảnh tượng trưng.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:3vh"><b style="color:var(--gold)">Cảm nhận:</b> Bài thơ giúp em cảm nhận được vẻ đẹp thơ mộng của xứ Huế và sự sâu sắc trong tâm hồn Hàn Mặc Tử.</p>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide s6">
+    <h2>Cảm nhận về vẻ đẹp thiên nhiên và con người trong bài thơ “Đây thôn Vĩ Dạ”</h2>
+    <p>Bài thơ “Đây thôn Vĩ Dạ” của Hàn Mặc Tử đã để lại trong em nhiều ấn tượng sâu sắc về vẻ đẹp thiên nhiên và con người xứ Huế. Qua từng khổ thơ, tác giả đã vẽ nên một bức tranh thiên nhiên vừa thơ mộng, trong trẻo, vừa mang nét buồn và cô đơn.</p>
+    <p>Ở khổ thơ đầu, thiên nhiên thôn Vĩ hiện lên với vẻ đẹp tươi sáng và đầy sức sống. Hình ảnh “nắng hàng cau” gợi ra ánh nắng ban mai nhẹ nhàng, trong trẻo. Đặc biệt, câu thơ “Vườn ai mướt quá xanh như ngọc” đã thể hiện một khu vườn xanh tươi, tràn đầy sức sống. Không chỉ có thiên nhiên, con người xứ Huế cũng xuất hiện rất duyên dáng qua hình ảnh “Lá trúc che ngang mặt chữ điền”. Hình ảnh ấy gợi lên vẻ đẹp kín đáo, nhẹ nhàng và phúc hậu của con người nơi đây.</p>
+    <p>Đến khổ thơ thứ hai, cảnh vật không còn tươi sáng như trước mà trở nên buồn và có phần xa cách. Hình ảnh “Gió theo lối gió, mây đường mây” gợi cảm giác chia lìa, cô đơn. Dòng nước trôi chậm cùng hình ảnh con thuyền chở trăng khiến khung cảnh trở nên mơ hồ và đầy thơ mộng. Qua đó, em cảm nhận được nỗi buồn đang bao trùm tâm hồn nhà thơ.</p>
+    <p>Ở khổ thơ cuối, cảnh vật hiện lên trong làn sương khói mờ ảo. Hình ảnh con người trở nên xa xôi, khó nắm bắt. Câu hỏi “Ai biết tình ai có đậm đà?” thể hiện sự băn khoăn, lo lắng của tác giả về tình cảm và sự đồng cảm giữa con người với con người. Qua đó, ta thấy được một tâm hồn nhạy cảm, luôn mong muốn được yêu thương và gắn bó với cuộc đời.</p>
+    <p>Bằng ngôn ngữ giàu hình ảnh, cách sử dụng biện pháp tu từ tinh tế và những câu hỏi tu từ giàu cảm xúc, Hàn Mặc Tử đã tạo nên một bức tranh thôn Vĩ Dạ vừa đẹp đẽ vừa man mác buồn. Qua bài thơ, em càng thêm yêu vẻ đẹp thiên nhiên xứ Huế và cảm nhận được tâm hồn sâu sắc, giàu tình cảm của nhà thơ.</p>
+  </section>
+
+</div>
+
+<div class="controls">
+  <button id="prev">← Trước</button>
+  <span class="counter" id="counter"></span>
+  <button id="next">Sau →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  function show(n) {
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  document.getElementById('next').onclick = () => show(current + 1);
+  document.getElementById('prev').onclick = () => show(current - 1);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') show(current + 1);
+    if (e.key === 'ArrowLeft') show(current - 1);
+  });
+
+  show(0);
+</script>
+</body>
+</html>
